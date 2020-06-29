@@ -34,6 +34,7 @@ Sub copyVisibleCellsEnd(rng As Range, destWorksheet As Worksheet)
     destWorksheet.Range("A" & rowIndex).Select
     destWorksheet.Paste
 End Sub
+
 Function getColumnCount(rng As Range) As Long
 'return the number of columns from a range
     getColumnCount = rng.Columns.count
@@ -42,6 +43,7 @@ Function getRowCount(rng As Range) As Long
 'returns the number of rows from a range
     getRowCount = rng.Rows.count
 End Function
+
 Function getVisibleColumnCount(rng As Range) As Long
 'returns the number of visible columns from a range
     Dim cellItem As Range
@@ -52,6 +54,7 @@ Function getVisibleColumnCount(rng As Range) As Long
     Next cellItem
     getVisibleColumnCount = count
 End Function
+
 Function getVisibleRowCount(rng As Range) As Long
 'return the number of visible rows from a range
     Dim cellItem As Range
@@ -62,6 +65,7 @@ Function getVisibleRowCount(rng As Range) As Long
     Next cellItem
     getVisibleRowCount = count
 End Function
+
 Function isVisibleRowGreaterThan(rng As Range, rowCount) As Boolean
 'return the number of visible rows from a range
     Dim cellItem As Range
@@ -78,6 +82,7 @@ Function isVisibleRowGreaterThan(rng As Range, rowCount) As Boolean
     Next cellItem
     isVisibleRowGreaterThan = isGreater
 End Function
+
 Function fileExists(file As String) As Boolean
 'check if a file exists returns true if yes and false if not
     Dim fso As Object
@@ -85,6 +90,7 @@ Function fileExists(file As String) As Boolean
     fileExists = fso.fileExists(file)
     Set fso = Nothing
 End Function
+
 Function folderExists(Path As String) As Boolean
 'check if a folder exists or not returns true if exisit and false if not
     Dim fso As Object
@@ -92,6 +98,7 @@ Function folderExists(Path As String) As Boolean
     folderExists = fso.folderExists(Path)
     Set fso = Nothing
 End Function
+
  Function getFileCount(psPath As String) As Long
 'strive4peace
 'uses Late Binding. Reference for Early Binding:
@@ -313,27 +320,27 @@ End Function
 Sub worksheetUnhideAllRows(Optional ws As Worksheet)
 'unhide all rows in a worksheet
 'if no worksheet is provided then the active worksheet is used
-If ws Is Nothing Then
-    Set ws = ActiveSheet
-End If
+    If ws Is Nothing Then
+        Set ws = ActiveSheet
+    End If
     ws.Rows.EntireRow.Hidden = False
 End Sub
  
 Sub worksheetUnhideAllColumns(Optional ws As Worksheet)
 'unhide all columns in a worksheet
 'if no worksheet is provided then the active worksheet is used
-If ws Is Nothing Then
-    Set ws = ActiveSheet
-End If
+    If ws Is Nothing Then
+        Set ws = ActiveSheet
+    End If
     ws.Rows.EntireColumn.Hidden = False
 End Sub
  
 Sub worksheetUnhideAllRowsAndColumns(Optional ws As Worksheet)
 'unhide all rows and columns in a worksheet
 'if no worksheet is provided then the active worksheet is used
-If ws Is Nothing Then
-    Set ws = ActiveSheet
-End If
+    If ws Is Nothing Then
+        Set ws = ActiveSheet
+    End If
     Call worksheetUnhideAllRows(ws)
     Call worksheetUnhideAllColumns(ws)
 End Sub
