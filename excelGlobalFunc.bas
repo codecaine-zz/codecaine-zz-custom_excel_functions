@@ -14,6 +14,7 @@ Sub copyVisibleCells(rng As Range, destWorksheet As Worksheet)
     destWorksheet.Select
     destWorksheet.Paste
 End Sub
+
 Sub copyVisibleCellsEnd(rng As Range, destWorksheet As Worksheet)
     'Select visible cells in a range and paste only the visible cells to last row of worksheet
     Dim rowIndex As Long
@@ -39,6 +40,7 @@ Function getColumnCount(rng As Range) As Long
 'return the number of columns from a range
     getColumnCount = rng.Columns.count
 End Function
+
 Function getRowCount(rng As Range) As Long
 'returns the number of rows from a range
     getRowCount = rng.Rows.count
@@ -216,6 +218,7 @@ Function columnNumToColumnLetter(colNum As Long) As String
     Set regex = Nothing
     Set Matches = Nothing
 End Function
+
 Sub deleteRowIfCellBlank(rng As Range)
 'delete the entire row if any cells are blank
     On Error Resume Next
@@ -242,6 +245,7 @@ Function getColumnIndex(rng As Range, heading As String, Optional ColumnLetter A
     getColumnIndex = 0
     Set title = Nothing
 End Function
+
 Function rangeToArray(rng As Range) As Variant
 'returns a range of values as an array
  
@@ -268,6 +272,7 @@ Function worksheetExists(sheetName As String) As Boolean
         End If
       Next ws
 End Function
+
 Function worksheetDelete(sheetName As String) As Boolean
 'delete worksheet if the workseet exists in the active workbook by worksheet name
     If worksheetExists(sheetName) Then
@@ -288,6 +293,7 @@ Function worksheetCreate(sheetName As String, Optional sheetIndex As Integer = 0
 errHandler:
     MsgBox "Error Number: " & Err.Number & vbCr, vbCr & " Description: & err.Description"
 End Function
+
 Function worksheetCopy(wsName As String, Optional wbPath = "", Optional newWsName = "") As Boolean
 'copies a worksheet from within the same workbook or from an external workbook
 'if newWsName is not an empty string the copied worksheet is renamed to the newWsName
@@ -455,6 +461,7 @@ errHandler:
     Debug.Print Err.Description
     Resume exitSuccess
 End Function
+
 Function regexPatternCount(strData As String, pattern As String, Optional isGlobal As Boolean = True, Optional isIgnoreCase As Boolean = True, Optional isMultiLine As Boolean = True) As Long
 'returns the number of matters matches in a string using regex
 '-1 will return if there was an error
@@ -484,6 +491,7 @@ Function regexRemoveConcatDupChars(data As String) As String
 'remove duplicates characters when concatenated together
     regexRemoveConcatDupChars = regexReplace(data, "(.)\1+", "$1")
 End Function
+
 Function regexContainsConcatDupChars(data As String) As Boolean
 'returns true if there are concatenated characters of the same type in as string provided
     regexContainsConcatDupChars = regexPatternCount(data, "(.)\1+")
@@ -497,14 +505,17 @@ Function regexContainsNonAscii(data As String) As Boolean
         regexContainsNonAscii = False
     End If
 End Function
+
 Function regexLeftTrim(data As String) As String
 'returns a string removing spaces and tab characters from the beginning of a string only
     regexLeftTrim = regexReplace(data, "^[\s\t]+")
 End Function
+
 Function regexRightTrim(data As String) As String
 'returns a string removing spaces and tab characters from the beginning and end of a string
     regexRightTrim = regexReplace(data, "[\s\t]+$")
 End Function
+
 Function regexTrim(data As String) As String
 'returns a string removing spaces and tab characters from the beginning and end of a string
     data = regexLeftTrim(data)
@@ -520,10 +531,12 @@ Function setFirstLetterCapitalized(data As String) As String
         setFirstLetterCapitalized = UCase(Mid(data, 1, 1)) & Mid(data, 2, Len(data))
     End If
 End Function
+
 Function setProperCase(data As String) As String
 'returns a string with all words starting with a capital letter and the rest lowercase
     setProperCase = StrConv(data, vbProperCase)
 End Function
+
 Function sqlStrFormat(data As String) As String
 'returns a string replacing single quotes with double single quotes
     Const SINGLE_QUOTE_CHAR = "'"
