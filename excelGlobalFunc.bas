@@ -280,6 +280,7 @@ Function worksheetDelete(sheetName As String) As Boolean
     End If
     worksheetDelete = True
 End Function
+
 Function worksheetCreate(sheetName As String, Optional sheetIndex As Integer = 0) As Worksheet
 ' create a worksheet with provided sheetname in active workbook
     Dim objSheet As Object
@@ -289,9 +290,10 @@ Function worksheetCreate(sheetName As String, Optional sheetIndex As Integer = 0
     End If
     Set objSheet = Sheets.Add(After:=Sheets(sheetIndex))
     objSheet.Name = sheetName
+    Set worksheetCreate = objSheet
     Exit Function
 errHandler:
-    MsgBox "Error Number: " & Err.Number & vbCr, vbCr & " Description: & err.Description"
+    Debug.Print Err.Number, Err.Description
 End Function
 
 Function worksheetCopy(wsName As String, Optional wbPath = "", Optional newWsName = "") As Boolean
