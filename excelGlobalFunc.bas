@@ -692,3 +692,15 @@ Sub sort_search_example()
     'copy values of 2d array back into range without the needs of cell by cell update
     rng.Value = arr2d
 End Sub
+
+Function collectionToArray(col As Collection) As Variant
+'returns an array from a collection object
+    Dim result  As Variant
+    Dim cnt     As Long
+   
+    ReDim result(col.count - 1)
+    For cnt = 0 To col.count - 1
+        result(cnt) = col(cnt + 1)
+    Next cnt
+    collectionToArray = result
+End Function
